@@ -1,7 +1,7 @@
 # ByteSpace
 
 Landing page for the ByteSpace online-course platform, built from the
-[ByteSpace New Figma design](https://www.figma.com/design/26TBgRjmpuxudcErJsHUfy/ByteSpace-New-Check-website).
+[ByteSpace New Figma design](https://bytespace-new-two.vercel.app/).
 
 **Live:** _add your Vercel URL here_
 
