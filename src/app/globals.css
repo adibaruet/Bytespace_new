@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* =========================================================
+   ByteSpace design tokens
+   Values taken from the Figma style guide (01 Typography,
+   01 Colors, 03 Layout Grid). Everything below is the single
+   source of truth: no raw hex values anywhere else.
+   ========================================================= */
+@theme {
+  /* ---------- Neutral / Black ---------- */
+  --color-ink-50: #f5f5f6;
+  --color-ink-100: #e5e6e8;
+  --color-ink-200: #ced0d3;
+  --color-ink-300: #aaaeb5;
+  --color-ink-400: #82868e;
+  --color-ink-500: #676973;
+  --color-ink-600: #585a62;
+  --color-ink-700: #4b4c53;
+  --color-ink-800: #424348;
+  --color-ink-900: #3a3b3f;
+  --color-ink-950: #242528;
+
+  /* ---------- Primary / Electric Violet ---------- */
+  --color-brand-50: #e7f6ff;
+  --color-brand-100: #d3eeff;
+  --color-brand-200: #b0ddff;
+  --color-brand-300: #81c5ff;
+  --color-brand-400: #4f9dff;
+  --color-brand-500: #2772ff;
+  --color-brand-600: #0445ff;
+  --color-brand-700: #0043f1;
+  --color-brand-800: #013be2;
+  --color-brand-900: #0a36a4;
+  --color-brand-950: #071e5f;
+
+  /* ---------- Secondary / Crimson (lime) ---------- */
+  --color-lime-50: #fdffe3;
+  --color-lime-100: #faffc5;
+  --color-lime-200: #f1ff93;
+  --color-lime-300: #e4ff53;
+  --color-lime-400: #d4fb21;
+  --color-lime-500: #cbfc00;
+  --color-lime-600: #8cb400;
+  --color-lime-700: #6a8903;
+  --color-lime-800: #556b08;
+  --color-lime-900: #465a0e;
+  --color-lime-950: #243300;
+
+  /* ---------- Type families ---------- */
+  --font-heading: "Poppins", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-body: "Satoshi", "Poppins", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* ---------- Type scale: headings, 120% leading ---------- */
+  --text-h-l: 4.5rem;
+  --text-h-l--line-height: 1.2;
+  --text-h-m: 2.75rem;
+  --text-h-m--line-height: 1.2;
+  --text-h-s: 2.25rem;
+  --text-h-s--line-height: 1.2;
+  --text-h-xs: 1.25rem;
+  --text-h-xs--line-height: 1.2;
+
+  /* ---------- Type scale: body, 160% leading ---------- */
+  --text-body-l: 1.125rem;
+  --text-body-l--line-height: 1.6;
+  --text-body-m: 1rem;
+  --text-body-m--line-height: 1.6;
+  --text-body-s: 0.875rem;
+  --text-body-s--line-height: 1.6;
+  --text-body-xs: 0.75rem;
+  --text-body-xs--line-height: 1.6;
+
+  /* ---------- Type scale: labels, 120% leading ---------- */
+  --text-label-l: 1.125rem;
+  --text-label-l--line-height: 1.2;
+  --text-label-m: 1rem;
+  --text-label-m--line-height: 1.2;
+  --text-label-s: 0.875rem;
+  --text-label-s--line-height: 1.2;
+  --text-label-xs: 0.75rem;
+  --text-label-xs--line-height: 1.2;
+
+  /* ---------- Layout grid: 12 cols, 120px margin, 40px gutter ---------- */
+  --spacing-gutter: 2.5rem;
+  --container-page: 75rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-ink-950);
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* The faint square grid that sits over every blue panel in the design. */
+@utility grid-overlay {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.10) 1px, transparent 1px);
+  background-size: 100px 100px;
+}
+
+/* Soft lime-to-lavender wash used by the two mid-page feature bands. */
+@utility wash-lime {
+  background-image:
+    radial-gradient(120% 90% at 0% 0%, var(--color-lime-200) 0%, transparent 55%),
+    radial-gradient(120% 90% at 100% 100%, var(--color-brand-50) 0%, transparent 55%);
+}
