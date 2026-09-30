@@ -22,6 +22,7 @@ Built from the [ByteSpace Figma design](https://www.figma.com/design/26TBgRjmpux
 - [Overview](#overview)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
+- [Development](#development)
 - [Routes](#routes)
 - [Project Structure](#project-structure)
 - [Key Design Decisions](#key-design-decisions)
@@ -33,7 +34,7 @@ Built from the [ByteSpace Figma design](https://www.figma.com/design/26TBgRjmpux
 
 ## Overview
 
-ByteSpace is a landing page for an online-course platform, rebuilt from a Figma design. It has nine landing sections plus two auth screens (Sign In and Create an Account).
+ByteSpace is a landing page for an online-course platform, rebuilt from a Figma design. It has eight landing sections plus a footer, and two auth screens (Sign In and Create an Account).
 
 Every colour, font and type size from the Figma style guide lives in one file, `src/app/globals.css`. No component contains a raw hex value, so re-theming the whole site means editing that one file.
 
@@ -66,6 +67,12 @@ npm run build
 
 ---
 
+## Development
+
+Changes are made on feature branches and merged into `main` through pull requests, rather than committed to `main` directly.
+
+---
+
 ## Routes
 
 | Route | Screen |
@@ -92,8 +99,8 @@ src/
 │  └─ signup/page.tsx     Create an Account
 │
 ├─ components/
-│  ├─ ui/                 Button, Chip, Container, Icon, Logo,
-│  │                      SectionHeading, AvatarStack
+│  ├─ ui/                 Button, Chip, Container, Icon, Logo, SectionHeading,
+│  │                      AvatarStack, TextField
 │  ├─ cards/              CourseCard, CategoryCard, TestimonialCard, FloatingCard
 │  ├─ decor/              Shapes.tsx (3D props rebuilt as inline SVG)
 │  ├─ layout/             Navbar (with mobile menu), Footer, AuthLayout
@@ -117,6 +124,9 @@ The coils, rings, cones and cylinders in `decor/Shapes.tsx` stay sharp at any si
 ### 3. Fonts load through `<link>` tags, not `next/font`
 `next/font` downloads font files at build time, which fails on restricted CI networks. Plain `<link>` tags keep the build self-contained and let the browser fetch the fonts instead.
 
+### 4. One layout component backs both auth screens
+`AuthLayout` holds everything the Sign In and Create an Account screens have in common, and the card collage inside it reuses the same `CourseCard` the landing page uses. Card styling therefore lives in exactly one place.
+
 ---
 
 ## Design Tokens
@@ -139,7 +149,7 @@ Matches the style guide exactly.
 |---|---|---|---|
 | Headings | `text-h-l` / `h-m` / `h-s` / `h-xs` | 72 / 44 / 36 / 20 px | 120% |
 | Body | `text-body-l` / `m` / `s` / `xs` | 18 / 16 / 14 / 12 px | 160% |
-| Labels | `text-label-l` / `m` / `s` / `xs` | per style guide | 120% |
+| Labels | `text-label-l` / `m` / `s` / `xs` | 18 / 16 / 14 / 12 px | 120% |
 
 ### Layout grid
 
@@ -149,7 +159,9 @@ Matches the style guide exactly.
 
 ## Images and Assets
 
-`public/images/` currently holds generated placeholders, so the page renders without the original Figma assets. To use real images, replace any file with the matching export. Nothing else needs to change. The full list is in `ASSETS.md`.
+The three photographic cut-outs — the hero figure and the two feature bands — are the real Figma exports. The course thumbnails and learner avatars are generated placeholders, so the page renders without the remaining assets.
+
+To use the real artwork, replace any file in `public/images/` with its matching export. Nothing else needs to change. The full list is in `ASSETS.md`.
 
 To regenerate the placeholders:
 
